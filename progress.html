@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #wrap{
+        /* width: 500px; */
+        height: 50px;
+        position: relative;
+        border: 1px solid #33eeff;
+
+    }
+    #outer{
+        /* width: 500px; */
+        height: 50px;
+    }
+    #inner{
+        position: absolute;
+        left: 50%;
+        top:0%;
+        height: 50px;
+        line-height: 50px;
+        color: #000;
+        text-align: center;
+    }
+</style>
+<body>
+    <div id="wrap">
+        <div id="outer">
+            <div id="inner"></div>
+        </div>
+    </div>
+</body>
+<script>
+    let Outer = document.getElementById('outer')
+    let Iiner = document.getElementById('inner')
+    let index = 0
+    let speed = 1
+    let timer = null
+    let changeColor = (Outer.offsetWidth/2) - (Iiner.offsetWidth/2)
+    console.log(Outer)
+    let Fullwidth = Outer.offsetWidth
+    clearInterval(timer)
+    process()
+    timer = setInterval(process,10)
+    function process(){
+        if(index<= Fullwidth){
+            Outer.style.width = index +'px'
+            index+= speed
+            Outer.style.background = '#33eeff'
+            console.log(index)
+            Iiner.innerHTML = parseInt(index/Fullwidth*100)+'%'
+            if(index>changeColor){
+                Iiner.style.color = '#fff'
+            }
+        }else{
+            clearInterval(timer)
+        }
+
+    }
+   
+</script>
+</html>
